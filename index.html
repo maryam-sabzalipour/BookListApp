@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Book List</title>
+</head>
+<body>
+  <section id="main">
+    <div class="container">
+      <div class="header">
+        <h1>Book List App</h1>
+      </div>
+      <div class="action-buttons">
+        <div class="add-book">
+          <a href="#" class="btn btn-green">Add Book</a>
+        </div>
+        <div class="search-books">
+          <a href="#" class="btn btn-orange">Search</a>
+        </div>
+        <div class="delete-all">
+          <a href="#" class="btn btn-red">Delete All</a>
+        </div>
+      </div>
+      <div class="form-container">
+        <form class="form">
+          
+              <div class="input-container">
+                <label for="book-name">
+                  Book Name
+                </label>
+                <input id="book-name" type="text" placeholder="Enter book name">
+             </div>
+              <div class="input-container">
+                <label for="author">
+                  Author
+                </label>
+                <input id="author" type="text" placeholder="Enter author name">
+              </div>
+           
+          
+              <div class="input-container">
+                <label for="pulish-year">
+                  Publish Year
+                </label>
+                <input id="pulish-year" type="number" placeholder="Enter publish year">
+              </div>
+              <div class="input-container">
+                <label for="isbn">
+                ISBN
+                </label>
+                <input id="isbn" type="number" placeholder="Enter isbn">
+              </div>
+        </form>
+        <div class="form-btn">
+          <a href="#" class="btn submit-btn">Submit</a>
+          <a href="#" class="btn cancel-btn">Cancel</a>
+        </div>
+      </div>
+      <div class="search">
+        <input type="search" placeholder="Search books" class="search-input">
+        <a href="#" class="fas fa-close"></a>
+      </div>
+      <table>
+        <thead>
+          <th>Book Name</th>
+          <th>Author</th>
+          <th>Publish Year</th>
+          <th>ISBN</th>
+        </thead>
+        <tbody id="book-list">
+        </tbody>
+      </table>
+      <div class="msg-container">
+        <h3 class="msg"></h3>
+      </div>
+    </div>
+  </section>
+  <section class="mobile-show">
+    <div>
+      <img src="./img/mobile.png" alt="switch to desktop">
+    </div>
+      
+   
+  </section>
+  <script src="./app.js"></script>
+</body>
+</html>
