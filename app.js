@@ -59,6 +59,21 @@ UI.prototype.displayBooks = function () {
   const books = store.getBooksFromStorage();
   books.forEach(ui.addBookToTable);
 };
+UI.prototype.changeLinkColor = function (
+  bgColor,
+  color,
+  bgColor1,
+  color1,
+  bgColor2,
+  color2
+) {
+  addBook.style.backgroundColor = bgColor;
+  addBook.style.color = color;
+  search.style.backgroundColor = bgColor1;
+  search.style.color = color1;
+  deleteAll.style.backgroundColor = bgColor2;
+  deleteAll.style.color = color2;
+};
 //Variables
 const addBook = document.querySelector(".btn-green"),
   search = document.querySelector(".btn-orange"),
@@ -66,7 +81,13 @@ const addBook = document.querySelector(".btn-green"),
   deleteAll = document.querySelector(".btn-red"),
   submit = document.querySelector(".form-container"),
   cancel = document.querySelector(".cancel-btn"),
-  ui = new UI();
+  ui = new UI(),
+  variable = document.querySelector(":root"),
+  variableStyles = getComputedStyle(variable),
+  green = variableStyles.getPropertyValue("--green"),
+  orange = variableStyles.getPropertyValue("--orange"),
+  pink = variableStyles.getPropertyValue("--pink"),
+  light = variableStyles.getPropertyValue("--light-color");
 
 //Event Listeners
 document.addEventListener("DOMContentLoaded", ui.displayBooks);
@@ -100,11 +121,14 @@ Store.prototype.deleteFromStorage = function () {
 function addNewBook(e) {
   submit.style.display = "block";
   document.querySelector(".search").style.display = "none";
+  const ui = new UI();
+  ui.changeLinkColor(green, light, "", "", "", "");
   e.preventDefault();
 }
 function findBooks(e) {
   const ui = new UI();
   ui.switchBetweenBtns();
+  ui.changeLinkColor("", "", orange, light, "", "");
   const userInput = document.querySelector(".search-input");
   userInput.focus();
   userInput.addEventListener("keyup", function () {
@@ -116,12 +140,14 @@ function findBooks(e) {
 function hideSearchBar(e) {
   const ui = new UI();
   ui.hide();
+  ui.changeLinkColor("", "", "", "", "", "");
   e.preventDefault();
 }
 function deleteBooks(e) {
   const tableBody = document.querySelector("#book-list");
   const ui = new UI();
   const store = new Store();
+  ui.changeLinkColor("", "", "", "", pink, light);
   if (tableBody.rows.length == 0) {
     ui.showAlert("There are no items to delete!");
   } else {
@@ -155,6 +181,7 @@ function submitBooks(e) {
 function cancelSubmit(e) {
   const ui = new UI();
   ui.cancelbtn();
+  ui.changeLinkColor("", "", "", "", "", "");
   ui.showAlert("");
   e.preventDefault();
 }
