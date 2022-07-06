@@ -228,6 +228,7 @@ tr { animation: move-down .5s ease; }
     background-color: var(--light-color);
     padding: 15px;
     border-radius: 10px;
+    margin: 0 15px;
   }
 }
 @media  screen and (max-height: 500px) {
