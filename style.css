@@ -46,7 +46,7 @@ a:active {color: var(--dark-color);}
 .btn-orange:hover {background-color: var(--orange);}
 .btn-red:hover {background-color: var(--pink);}
 #main {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
