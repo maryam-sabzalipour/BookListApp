@@ -23,9 +23,15 @@ UI.prototype.addBookToTable = function (bookInfo) {
   tableBody.appendChild(tableRow);
 };
 UI.prototype.cancelbtn = function () {
-  submit.style.display = "none";
-  const form = document.querySelector(".form");
-  form.reset();
+  if (submit.classList.contains("form-show")) {
+    submit.classList.remove("form-show");
+    submit.classList.add("form-hide");
+    setTimeout(function () {
+      submit.style.display = "none";
+      const form = document.querySelector(".form");
+      form.reset();
+    }, 900);
+  }
 };
 UI.prototype.showAlert = function (message) {
   const msgContainer = document.querySelector(".msg-container");
@@ -51,7 +57,14 @@ UI.prototype.deleteAllBooks = function () {
   });
 };
 UI.prototype.hide = function () {
-  document.querySelector(".search").style.display = "none";
+  const userInput = document.querySelector(".search-input");
+  if (userInput.classList.contains("search-show")) {
+    userInput.classList.remove("search-show");
+    userInput.classList.add("search-hide");
+  }
+  setTimeout(function () {
+    document.querySelector(".search").style.display = "none";
+  }, 900);
 };
 UI.prototype.displayBooks = function () {
   const store = new Store();
@@ -119,6 +132,10 @@ Store.prototype.deleteFromStorage = function () {
 };
 //function declarations
 function addNewBook(e) {
+  if (submit.classList.contains("form-hide")) {
+    submit.classList.remove("form-hide");
+    submit.classList.add("form-show");
+  }
   submit.style.display = "block";
   document.querySelector(".search").style.display = "none";
   const ui = new UI();
@@ -130,6 +147,10 @@ function findBooks(e) {
   ui.switchBetweenBtns();
   ui.changeLinkColor("", "", orange, light, "", "");
   const userInput = document.querySelector(".search-input");
+  if (userInput.classList.contains("search-hide")) {
+    userInput.classList.remove("search-hide");
+    userInput.classList.add("search-show");
+  }
   userInput.focus();
   userInput.addEventListener("keyup", function () {
     ui.showAlert("");
