@@ -84,13 +84,25 @@ a:active {color: var(--dark-color);}
   width: 80%;
   margin-bottom: 40px;
   padding: 10px;
-  animation: form-fly 1s ease-in-out;
   display: none;
+  transition: all 1s ease-out;
+}
+.form-show {
+  animation: form-fly 1s ease-in-out;
 }
 @keyframes form-fly {
   40% { transform: translateY(-20px); } 
   80% { transform: translateY(20px); }
   100% { transform: translateY(0); }
+}
+.form-hide {
+  animation: hide 2s ease-out forwards;
+}
+@keyframes hide {
+  0% { transform: translateY(0); display: block; }
+  10% { transform: translateY(50px); }
+  100% {transform: translateY(-1000px); display: none;
+  }
 }
 .form-container .form {
   display: grid;
@@ -141,34 +153,38 @@ a:active {color: var(--dark-color);}
 .form-container .form .input-container input:focus {
   border: 2px solid var(--dark-color);
 }
-@keyframes hide {
-  0% { transform: translateY(0); display: block; }
-  10% { transform: translateY(40px); }
-  100% {transform: translateY(-1000px); display: none;
-  }
-}
+
 .search {
   padding: 10px;
   width: 400px;
   display: none;
 }
-.search input {
+.search .search-input {
   padding: 15px;
   width: 90%;
   outline: none;
   border: 1px solid var(--orange);
   border-radius: 10px;
   font-size: 18px;
-  animation: search-move 1.9s;
 }
-.search input::placeholder { font-size: 16px; }
+.search .search-input::placeholder { font-size: 16px; }
 .search .fa-close {
   color: var(--pink);
   font-size: 22px;
 }
+.search .search-show {
+  animation: search-move 1.9s;
+}
 @keyframes search-move {
   0% { width: 10px; }
-  100% { width: 360px; }
+  100% { width: 90%; }
+}
+.search .search-hide {
+  animation: close-search 1s linear forwards;
+}
+@keyframes close-search {
+  0% { width: 90%; }
+  100% { width: 0; opacity: 0; }
 }
 table {
   max-width: 100%;
@@ -196,8 +212,8 @@ tr { animation: move-down .5s ease; }
   margin-top: 20px;
   color: var(--pink);
 }
-.msg { animation: shake 0.5s 1; }
-@keyframes shake {
+.msg { animation: slide-in 0.5s 1; }
+@keyframes slide-in {
   0% {transform: translatex(-4000px);}
   40% {transform: translatex(50px);}
   60%{transform: translateX(60px);}
@@ -228,7 +244,6 @@ tr { animation: move-down .5s ease; }
     background-color: var(--light-color);
     padding: 15px;
     border-radius: 10px;
-    margin: 0 15px;
   }
 }
 @media  screen and (max-height: 500px) {
